@@ -8,4 +8,4 @@ file(GLOB source *.cxx)
 add_library(${MODULE} SHARED ${source})
 
 set(CMAKE_INSTALL_PREFIX ../..)
-install(TARGETS ${MODULE} DESTINATION bin)
+install(TARGETS ${MODULE} DESTINATION lib)
