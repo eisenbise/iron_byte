@@ -1,7 +1,11 @@
 #pragma once
 
+#include <map>
+
 namespace Execution
 {
+  class Thread;
+
   class ThreadPool
   {
     public:
@@ -9,7 +13,11 @@ namespace Execution
 
       ~ThreadPool(void);
 
-    private:
+      Thread* CheckOut(void);
 
+      void CheckIn(int pThreadId);
+
+    private:
+      std::map<int, Thread*> mThreads;
   };
 }

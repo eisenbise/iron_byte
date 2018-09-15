@@ -38,3 +38,8 @@
 CMakeCache.txt
 CMakeFiles
 cmake_install.cmake
+.ninja_deps
+.ninja_log
+.settings
+build.ninja
+rules.ninja
