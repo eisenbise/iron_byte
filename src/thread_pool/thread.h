@@ -1,5 +1,7 @@
 #pragma once
 
+namespace std { class thread; }
+
 namespace Execution
 {
   class Payload;
@@ -16,16 +18,18 @@ namespace Execution
     bool IsCheckedOut(void) { return isCheckedOut; }
     bool IsActive(void)     { return isActive; }
 
-    int Init(Payload* pPayload);
-    int Execute(void);
+    int  Init(Payload* pPayload);
+    int  Execute(void);
+    void Wait(void);
 
   private:
     bool IsValid(void);
 
     Payload* mPayload;
 
-    const int mThreadId;
+    std::thread* mLocalThread;
 
+    const int mThreadId;
     bool isCheckedOut;
     bool isActive;
   };

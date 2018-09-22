@@ -2,6 +2,8 @@
 
 #include "thread.h"
 
+#include <iostream>
+
 namespace Execution
 {
   const int NumberOfThreads = 10;
@@ -40,7 +42,12 @@ namespace Execution
       {
         outThread = thread->second;
         outThread->CheckOut();
+        break;
       }
+    }
+    if (NULL == outThread)
+    {
+      std::cout << "No threads in the pool" << std::endl;
     }
     return outThread;
   }

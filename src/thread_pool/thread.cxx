@@ -17,6 +17,7 @@ namespace Execution
       isCheckedOut(false),
       isActive    (false)
   {
+    mLocalThread = NULL;
     mPayload = NULL;
   }
 
@@ -63,9 +64,16 @@ namespace Execution
   {
     isActive = true;
 
-    std::thread localThread(*mPayload);
+    mLocalThread = new std::thread(*mPayload);
+  }
 
-    localThread.join();
+  //----------------------------------------------------------------------------
+  // Wait
+  //----------------------------------------------------------------------------
+  void Thread::Wait()
+  {
+    mLocalThread->join();
+
     isActive = false;
   }
 }
